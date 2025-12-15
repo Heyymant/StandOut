@@ -23,32 +23,31 @@ const FACTUAL_PROMPTS = {
     'Something found in an office',
     'A character from The Office (US)',
     'An excuse for being late to work',
-    'Something you replace at work',
+    'An office supply',
     'A way to get from here to there',
     'Something in a desk drawer',
     'A thing coworkers always steal',
-    'An office supply',
     'Something that breaks in the office',
     'A reason to leave work early',
     'A thing found in the break room',
     'An office prank',
-    'Something you hide from your boss',
+    'A common office item',
     'A work-from-home essential',
-    'A thing that makes office life bearable',
+    'An office amenity',
   ],
   'Kitchen & Cooking': [
     'Something found in a kitchen drawer',
     'A kitchen appliance',
     'A type of cooking utensil',
-    'Something you store in a refrigerator',
+    'Something stored in a refrigerator',
     'A baking ingredient',
     'A type of cookware (pot, pan, etc.)',
     'Something found in a spice rack',
     'A kitchen gadget',
     'A type of knife used in cooking',
-    'Something you find under the kitchen sink',
-    'A breakfast item you cook',
-    'A condiment in your fridge door',
+    'Something found under the kitchen sink',
+    'A breakfast food',
+    'A condiment',
     'Something measured when baking',
     'A type of pasta sauce',
     'A cuisine style',
@@ -69,6 +68,94 @@ const FACTUAL_PROMPTS = {
     'A type of renewable energy',
     'A scientific unit of measurement',
     'A famous science experiment',
+  ],
+  'General Knowledge': [
+    'A world capital city',
+    'A famous landmark',
+    'A country flag color',
+    'A famous painting',
+    'A classic novel',
+    'A famous author',
+    'A historical event',
+    'A famous quote',
+    'A world record holder',
+    'A famous invention',
+    'A planet in our solar system',
+    'An ocean or sea',
+    'A mountain range',
+    'A famous river',
+    'A UNESCO World Heritage Site',
+    'A famous museum',
+    'A currency',
+    'A language',
+    'A famous building',
+    'A famous statue',
+  ],
+  'Entertainment & Media': [
+    'A famous movie director',
+    'A classic film',
+    'An Academy Award winner',
+    'A famous TV show theme song',
+    'A streaming platform original',
+    'A famous actor',
+    'A movie franchise',
+    'A famous comedian',
+    'A talk show host',
+    'A reality TV star',
+    'A famous YouTuber',
+    'A podcast genre',
+    'A famous journalist',
+    'A news network',
+    'A famous interview',
+    'A famous movie quote',
+    'A TV show finale',
+    'A famous character',
+    'A movie genre',
+    'A famous song',
+  ],
+  'Sports & Games': [
+    'An Olympic sport',
+    'A famous athlete',
+    'A sports team',
+    'A championship trophy',
+    'A famous stadium',
+    'A board game',
+    'A card game',
+    'A video game character',
+    'A sports commentator',
+    'A famous sports moment',
+    'A sports record',
+    'A famous coach',
+    'A sports brand',
+    'A famous rivalry',
+    'A sports movie',
+    'A famous match',
+    'A sports equipment',
+    'A famous play',
+    'A sports award',
+    'A famous tournament',
+  ],
+  'Nature & Science': [
+    'An animal species',
+    'A type of tree',
+    'A flower',
+    'A bird',
+    'A sea creature',
+    'A natural phenomenon',
+    'A weather term',
+    'A type of cloud',
+    'A constellation',
+    'A famous scientist',
+    'A scientific discovery',
+    'A type of rock',
+    'A gemstone',
+    'A natural disaster',
+    'A national park',
+    'A type of plant',
+    'A mammal',
+    'A reptile',
+    'A type of weather',
+    'A famous natural wonder',
   ],
   'Cocktails & Drinks': [
     'A classic cocktail',
@@ -105,21 +192,21 @@ const FACTUAL_PROMPTS = {
     'A singer who acted in movies',
   ],
   'Adult Humor & Life': [
-    'Something you dread on Monday mornings',
+    'A Monday morning routine',
     'An excuse for being late',
     'An excuse to skip work',
-    'Something you replace',
+    'A common household item',
     'A way to get from here to there',
-    'Something you regret buying online',
+    'An online shopping category',
     'A first date disaster topic',
     'Something that gets better with age',
     'A reason to need coffee',
-    'Something you pretend to understand',
-    'A skill you lie about on your resume',
-    'Something you Google at 3 AM',
+    'A complex topic',
+    'A skill listed on resumes',
+    'A common search query topic',
     'A thing that costs more than it should',
-    'An adulting task everyone hates',
-    'Something your parents warned you about',
+    'An adulting task',
+    'Something parents warn about',
     'A reason to cancel plans',
     'Something you shouldn\'t say at work',
     'A thing people overshare on social media',
@@ -159,21 +246,20 @@ const FACTUAL_PROMPTS = {
     'A famous internet personality',
   ],
   'Food & Guilty Pleasures': [
-    'A late-night snack',
-    'A comfort food',
+    'A snack food',
+    'A type of food',
     'A type of pizza topping',
-    'Fast food you secretly love',
+    'A fast food chain',
     'A type of cheese',
     'An ice cream flavor',
-    'A food you pretend to like',
+    'A type of cuisine',
     'A brunch item',
     'Something at a food truck',
     'A food trend that went viral',
-    'A midnight craving food',
     'A controversial food combo',
     'A type of sushi roll',
     'A food that\'s better reheated',
-    'A snack from your childhood',
+    'A childhood snack',
   ],
   'Sports & Fitness': [
     'An excuse to skip the gym',
@@ -234,7 +320,7 @@ const FACTUAL_PROMPTS = {
     'Something in-laws always ask',
     'A breakup song',
     'A wedding expense that\'s overpriced',
-    'Something you hide from your partner',
+    'A relationship topic',
     'A relationship milestone',
     'A cringe pickup line',
     'Something people lie about on dating profiles',
@@ -318,18 +404,22 @@ const FALLBACK_PROMPTS = {
   ],
 };
 
-// Category themes for AI prompts - College graduate level
+// Category themes for AI prompts - Accessible for mildly intelligent people
 const CATEGORY_THEMES = {
-  mixed: 'a diverse mix of pop culture (The Office characters, Netflix shows), office life (things found in an office, excuses for being late), everyday situations (things you replace, ways to get from here to there), and relatable topics for smart 20-30 year olds',
-  easy: 'fun, universally known topics like The Office characters, things found in an office, excuses for being late, food, streaming shows, and social media that college graduates would know',
-  tricky: 'challenging intellectual topics like female scientists, Nobel Prize winners, logical fallacies, famous experiments, and niche pop culture references that require deeper knowledge',
-  desi: 'Bollywood movies, Indian cricketers, famous dialogues, Indian web series, IPL teams, and desi culture references that Indian millennials/Gen-Z love',
-  party: 'party and nightlife related topics like cocktails, drinking games, party songs, and fun social situations',
-  popculture: 'TV shows like The Office/Friends/Brooklyn 99, Marvel movies, viral memes, Netflix series, and celebrity culture',
-  adulting: 'relatable adult life struggles like work excuses, things you replace, ways to get places, office supplies, and things millennials/Gen-Z deal with',
+  mixed: 'a diverse mix of pop culture (The Office characters, Netflix shows), office life (things found in an office, excuses for being late), general knowledge (world capitals, famous landmarks), entertainment (movies, TV shows, actors), everyday situations (common items, ways to get from here to there), and factual topics for smart, educated adults',
+  easy: 'fun, universally known topics like The Office characters, things found in an office, excuses for being late, food, streaming shows, social media, famous movies, and popular culture that most educated people would know',
+  tricky: 'challenging intellectual topics like general knowledge (world capitals, famous landmarks, historical events), science (famous scientists, discoveries), literature (classic novels, authors), history (famous battles, historical figures), and topics that require deeper knowledge but are still accessible',
+  desi: 'Bollywood movies, Indian cricketers, famous dialogues, Indian web series, IPL teams, desi culture references, and topics that Indian millennials/Gen-Z love',
+    party: 'party and nightlife related topics like cocktails, drinking games, party songs, and social situations',
+  popculture: 'TV shows like The Office/Friends/Brooklyn 99, Marvel movies, viral memes, Netflix series, celebrity culture, and entertainment',
+  adulting: 'adult life topics like work excuses, common household items, ways to get places, office supplies, and things millennials/Gen-Z deal with',
   dating: 'modern dating, relationship dynamics, red flags, dating apps, and love life situations',
-  tech: 'technology, internet culture, memes, startups, apps, and things that live on social media',
-  food: 'foodie culture, late-night cravings, guilty pleasures, viral food trends, and comfort foods',
+  tech: 'technology, internet culture, memes, startups, apps, social media platforms, and things that live on the internet',
+  food: 'foodie culture, snack foods, food types, viral food trends, and popular foods',
+  general: 'general knowledge topics like world capitals, famous landmarks, historical events, famous people, geography, and common knowledge',
+  entertainment: 'movies, TV shows, actors, directors, streaming platforms, entertainment industry, and media',
+  sports: 'sports, athletes, teams, games, board games, video games, and recreational activities',
+  nature: 'animals, nature, science, natural phenomena, geography, and the natural world',
 };
 
 /**
@@ -379,17 +469,19 @@ async function generateAIPrompts(category = 'mixed', count = 5) {
   ];
   const selectedStyle = promptStyles[Math.floor(Math.random() * promptStyles.length)];
 
-  const systemPrompt = `You are a creative game prompt generator for "STANDOUT" - a word game for smart, witty adults in their 20s-40s.
+  const systemPrompt = `You are a creative game prompt generator for "STANDOUT" - a word game for smart, witty adults.
 
 CRITICAL: Generate FRESH, UNIQUE prompts every time. Never repeat prompts you've generated before.
-Target: College graduates who love The Office, pop culture, cocktails, and intellectual humor.
+Target: Educated adults who love The Office, pop culture, general knowledge, entertainment, and intellectual humor. Keep topics accessible - not too technical or overly complex.
 
 RULES:
 1. Each prompt MUST have MULTIPLE correct answers (not just one)
 2. Make them FUN, relatable, and spark conversation
-3. Mix pop culture, office life, everyday situations, and smart references
-4. Avoid generic or boring prompts
-5. Be creative and unexpected`;
+3. Mix pop culture, office life, general knowledge, entertainment, everyday situations, and smart references
+4. Keep topics accessible - avoid overly technical engineering or advanced mathematics
+5. Focus on general knowledge, entertainment, pop culture, history, geography, and relatable topics
+6. Avoid generic or boring prompts
+7. Be creative and unexpected`;
 
   const userPrompt = `Generate exactly ${count} UNIQUE, FRESH prompts for: ${theme}
 
@@ -406,15 +498,21 @@ Prompt styles to vary:
 - "Something you [action]"
 - "A way to [do something]"
 - "A [category] that [description]"
+- "A famous [person/place/thing]"
+- "A [type of] [category]"
+- "A [geographical/historical/cultural] [item]"
 
 Examples (DO NOT copy these, create NEW ones):
 - "A character from The Office (US)"
 - "Something found in an office"
 - "An excuse for being late"
-- "Something you replace"
+- "A common household item"
 - "A way to get from here to there"
-- "A female scientist or inventor"
-- "A late-night snack"
+- "A world capital city"
+- "A famous landmark"
+- "A classic film"
+- "A famous actor"
+- "A snack food"
 - "A red flag on a first date"
 
 Generate ${count} COMPLETELY NEW prompts. Return ONLY a JSON array of ${count} unique strings.`;
@@ -481,8 +579,8 @@ function getRandomFallbackPrompts(category = 'mixed', count = 5) {
   
   // Map categories to prompt groups
   const categoryMap = {
-    easy: ['Food & Guilty Pleasures', 'Tech & Internet', 'Pop Culture & TV'],
-    tricky: ['Smart & Science', 'History & Trivia', 'Random & Fun'],
+    easy: ['Food & Guilty Pleasures', 'Tech & Internet', 'Pop Culture & TV', 'Entertainment & Media'],
+    tricky: ['Smart & Science', 'History & Trivia', 'Random & Fun', 'General Knowledge', 'Nature & Science'],
     desi: ['Bollywood & Desi', 'Food & Guilty Pleasures'],
     party: ['Cocktails & Drinks', 'Adult Humor & Life', 'Music & Artists'],
     popculture: ['Pop Culture & TV', 'Music & Artists', 'Tech & Internet'],
@@ -491,7 +589,11 @@ function getRandomFallbackPrompts(category = 'mixed', count = 5) {
     tech: ['Tech & Internet', 'Smart & Science'],
     food: ['Food & Guilty Pleasures', 'Kitchen & Cooking', 'Cocktails & Drinks'],
     kitchen: ['Kitchen & Cooking', 'Food & Guilty Pleasures'],
-    science: ['Smart & Science', 'History & Trivia'],
+    science: ['Smart & Science', 'History & Trivia', 'Nature & Science'],
+    general: ['General Knowledge', 'History & Trivia', 'Nature & Science'],
+    entertainment: ['Entertainment & Media', 'Pop Culture & TV', 'Music & Artists'],
+    sports: ['Sports & Games'],
+    nature: ['Nature & Science', 'History & Trivia'],
   };
   
   const relevantCategories = categoryMap[category] || Object.keys(FACTUAL_PROMPTS);

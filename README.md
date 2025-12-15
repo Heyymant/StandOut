@@ -196,54 +196,52 @@ Uncommon/
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Free Deployment (Render)
+## 🚀 Free Deployment
 
-Deploy your game for free so anyone can play online!
+Deploy your game for free so anyone can play online! Set up a custom domain like `StandOut.hemant` to make it easy to share.
 
-### Method 1: One-Click Deploy (Recommended)
+### Quick Deploy Options
+
+**📖 For detailed deployment guide, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
+
+#### Option 1: Render.com (Recommended)
+- ✅ Free tier (750 hrs/month)
+- ✅ One-click deploy from GitHub
+- ✅ Custom domain support
+- 📝 See `render.yaml` for auto-configuration
+
+#### Option 2: Railway.app
+- ✅ Free tier ($5 credit/month)
+- ✅ No spin-down
+- ✅ Easy GitHub integration
+- 📝 See `railway.json` for configuration
+
+#### Option 3: Custom Domain Setup
+Want a custom domain like `StandOut.hemant`?
+- Use free subdomain services (DuckDNS, No-IP)
+- Or use your own domain with subdomain
+- Full guide in [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+### Quick Start Deployment
 
 1. **Push to GitHub**
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
-   gh repo create uncommon-game --public --push
+   git remote add origin YOUR_GITHUB_REPO_URL
+   git push -u origin main
    ```
 
-2. **Deploy to Render**
-   - Go to [render.com](https://render.com) and sign up (free)
-   - Click **New → Web Service**
+2. **Deploy to Render or Railway**
    - Connect your GitHub repo
-   - Render will auto-detect settings from `render.yaml`
-   - Click **Create Web Service**
+   - Auto-detects configuration
+   - Add environment variables (optional AI keys)
+   - Deploy!
 
-3. **Add AI API Key (Optional)**
-   - In Render dashboard → Your service → **Environment**
-   - Add: `AI_PROVIDER` = `openai` (or `deepseek`)
-   - Add: `AI_API_KEY` = `your-api-key`
-
-4. **Your game is live!** 🎉
-   - URL: `https://uncommon-game.onrender.com`
-   - Share this URL with friends to play!
-
-### Method 2: Manual Deploy
-
-```bash
-# Build the project
-npm run build
-
-# Start production server
-NODE_ENV=production npm start
-```
-
-### Free Hosting Alternatives
-
-| Platform | Free Tier | Notes |
-|----------|-----------|-------|
-| **Render** | ✅ 750 hrs/month | Best for full-stack, auto-sleeps after 15min |
-| **Railway** | ✅ $5 credit | Good alternative, 500hrs free |
-| **Fly.io** | ✅ 3 VMs free | Great for real-time apps |
-| **Cyclic** | ✅ Generous | Simple deployment |
+3. **Your game is live!** 🎉
+   - Share the URL with friends
+   - Works from anywhere, not just same WiFi!
 
 > **Note**: Free tier servers may "sleep" after inactivity. First load might take 30 seconds.
 

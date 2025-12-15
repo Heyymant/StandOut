@@ -1,9 +1,10 @@
 # Render.com deployment configuration
 # This file enables one-click deployment to Render
+# For custom domain setup, see DEPLOYMENT.md
 
 services:
   - type: web
-    name: uncommon-game
+    name: standout-game
     runtime: node
     plan: free
     buildCommand: npm install && npm run build
