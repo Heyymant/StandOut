@@ -1,6 +1,8 @@
-# 🎯 UNCOMMON - The Word Game
+# 🎯 STANDOUT - The Word Game
 
-A multiplayer word game where unique answers win! Play with friends on the same WiFi network.
+A multiplayer word game where unique answers win! Play with friends anywhere - WiFi, hotspot, or online!
+
+**Made by [@Heyymant](https://github.com/Heyymant)** | [View on GitHub](https://github.com/Heyymant/standout)
 
 ## 🎮 How to Play
 
@@ -196,31 +198,43 @@ Uncommon/
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 🚀 Free Deployment
+## 🚀 Free Deployment with Custom Domain
 
-Deploy your game for free so anyone can play online! Set up a custom domain like `StandOut.hemant` to make it easy to share.
+Deploy your game for FREE with a custom domain like `standout.hemant` or `standout.io`!
+
+### ⚡ Quick Start (20 minutes)
+
+**📖 See [QUICK_START_DEPLOY.md](./QUICK_START_DEPLOY.md) for 3-step guide**
+
+**📚 Full Guide: [DEPLOY_FREE_DOMAIN.md](./DEPLOY_FREE_DOMAIN.md)**
+
+### What You Get:
+- ✅ Free custom domain (DuckDNS, No-IP, or Freenom)
+- ✅ Free hosting (Render.com or Railway.app)
+- ✅ Works on WiFi, hotspot, or anywhere
+- ✅ **URL displayed prominently in-game** for easy sharing!
+- ✅ 100% FREE - No credit card needed!
 
 ### Quick Deploy Options
 
-**📖 For detailed deployment guide, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
+#### Option 1: Vercel (Frontend) + Render/Railway (Backend) ⭐ Recommended
+- ✅ **Frontend**: Vercel (fast CDN, free)
+- ✅ **Backend**: Render/Railway (Socket.io support)
+- ✅ Best performance + reliability
+- 📝 See **[DEPLOY_VERCEL.md](./DEPLOY_VERCEL.md)** for step-by-step guide
 
-#### Option 1: Render.com (Recommended)
+#### Option 2: Render.com (Full Stack)
 - ✅ Free tier (750 hrs/month)
 - ✅ One-click deploy from GitHub
 - ✅ Custom domain support
+- ⚠️ Spins down after 15 min (use UptimeRobot to keep awake - see `KEEP_RENDER_AWAKE.md`)
 - 📝 See `render.yaml` for auto-configuration
 
-#### Option 2: Railway.app
+#### Option 3: Railway.app (Full Stack)
 - ✅ Free tier ($5 credit/month)
 - ✅ No spin-down
 - ✅ Easy GitHub integration
 - 📝 See `railway.json` for configuration
-
-#### Option 3: Custom Domain Setup
-Want a custom domain like `StandOut.hemant`?
-- Use free subdomain services (DuckDNS, No-IP)
-- Or use your own domain with subdomain
-- Full guide in [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ### Quick Start Deployment
 
@@ -269,6 +283,12 @@ All devices on the same WiFi network can play together!
 | Duplicate answer (2+ players) | 0 |
 | Empty/skipped | 0 |
 | Invalid (wrong letter) | 0 |
+
+## 👤 Author
+
+**Heyymant**
+- GitHub: [@Heyymant](https://github.com/Heyymant)
+- Repository: [standout](https://github.com/Heyymant/standout)
 
 ## 📝 License
 

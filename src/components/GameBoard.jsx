@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { QRCodeSVG } from 'react-qr-code';
+import { QRCodeSVG } from 'qrcode.react';
 import PromptSelection from './PromptSelection';
 import GameRound from './GameRound';
 import VotingRound from './VotingRound';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { QRCodeSVG } from 'react-qr-code';
+import { QRCodeSVG } from 'qrcode.react';
 import { LogoStandout, IconWifi, IconChevronDown, IconChevronUp, IconPlay, IconUsers, IconMoon, IconSun } from './Icons';
 import './Lobby.css';
 
