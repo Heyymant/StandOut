@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { QRCodeSVG } from 'react-qr-code';
 import PromptSelection from './PromptSelection';
 import GameRound from './GameRound';
 import VotingRound from './VotingRound';
@@ -88,20 +89,38 @@ function GameBoard({ socket, room, playerName, isHost, gameState, onLeaveRoom })
                 </div>
               </div>
               <div className="connection-item">
-                <label>Connect URL</label>
+                <label>Game URL (Share This!)</label>
                 <div className="connection-value">
                   <code className="url-code">{window.location.origin}</code>
                   <button 
                     className="copy-btn"
-                    onClick={() => navigator.clipboard.writeText(window.location.origin)}
+                    onClick={() => {
+                      navigator.clipboard.writeText(window.location.origin);
+                      alert('URL copied! Share with friends.');
+                    }}
+                    title="Copy URL"
                   >
                     <IconCopy size={14} />
                   </button>
                 </div>
               </div>
             </div>
+            
+            {/* QR Code Section */}
+            <div className="qr-code-section">
+              <div className="qr-code-container">
+                <QRCodeSVG 
+                  value={window.location.origin}
+                  size={150}
+                  level="M"
+                  includeMargin={true}
+                />
+                <span className="qr-code-label">Scan QR code to join</span>
+              </div>
+            </div>
+            
             <p className="connection-tip">
-              Share the URL and Room Code with players on the same network
+              Share the URL and Room Code with players - works on WiFi, hotspot, or anywhere!
             </p>
           </div>
         </div>

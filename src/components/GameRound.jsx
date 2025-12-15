@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { CheckIcon, IconX, IconSend } from './Icons';
 import './GameRound.css';
 
@@ -6,6 +6,7 @@ function GameRound({ socket, room, playerName, isHost }) {
   const [words, setWords] = useState(Array(5).fill(''));
   const [timeLeft, setTimeLeft] = useState(60);
   const [submitted, setSubmitted] = useState(false);
+  const [autoSubmitted, setAutoSubmitted] = useState(false);
   const [submittedPlayers, setSubmittedPlayers] = useState([]);
   const inputRefs = useRef([]);
 
@@ -14,6 +15,7 @@ function GameRound({ socket, room, playerName, isHost }) {
     if (room && room.gameState === 'playing') {
       setWords(Array(5).fill(''));
       setSubmitted(false);
+      setAutoSubmitted(false);
       setSubmittedPlayers(room.submittedPlayers || []);
     }
   }, [room?.currentRound, room?.currentLetter]);
@@ -25,6 +27,40 @@ function GameRound({ socket, room, playerName, isHost }) {
     }
   }, [room?.submittedPlayers]);
 
+  // Auto-submit handler - useCallback to avoid stale closures
+  const handleAutoSubmit = useCallback(() => {
+    if (submitted || !room || !room.currentLetter) return;
+    
+    const letter = room.currentLetter.toLowerCase();
+    
+    // Normalize words: keep valid ones, filter out invalid ones (make them empty)
+    const normalized = words.map((w) => {
+      const trimmed = w.trim().toLowerCase();
+      if (!trimmed) return ''; // Empty is OK
+      // Only keep words that start with the correct letter
+      if (trimmed.startsWith(letter)) {
+        return trimmed;
+      }
+      return ''; // Invalid words become empty
+    });
+    
+    // Remove duplicates - keep first occurrence, make others empty
+    const seen = new Set();
+    const finalWords = normalized.map((w) => {
+      if (!w) return '';
+      if (seen.has(w)) {
+        return ''; // Duplicate, make empty
+      }
+      seen.add(w);
+      return w;
+    });
+    
+    // Submit automatically
+    socket.emit('submit-words', { roomId: room.id, words: finalWords });
+    setAutoSubmitted(true);
+    setSubmitted(true);
+  }, [submitted, room, words, socket]);
+
   // Timer calculation and countdown
   useEffect(() => {
     if (!room || !room.roundStartTime || submitted) return;
@@ -34,7 +70,8 @@ function GameRound({ socket, room, playerName, isHost }) {
       const remaining = Math.max(0, (room.gameConfig?.timeLimit || 60) - elapsed);
       setTimeLeft(remaining);
       
-      if (remaining === 0 && !submitted) {
+      // Auto-submit when timer reaches 0
+      if (remaining === 0) {
         handleAutoSubmit();
       }
     };
@@ -42,7 +79,7 @@ function GameRound({ socket, room, playerName, isHost }) {
     updateTimer();
     const timer = setInterval(updateTimer, 1000);
     return () => clearInterval(timer);
-  }, [room, submitted]);
+  }, [room, submitted, handleAutoSubmit]);
 
   // Listen for submission updates
   useEffect(() => {
@@ -58,20 +95,6 @@ function GameRound({ socket, room, playerName, isHost }) {
     socket.on('submission-received', handleSubmission);
     return () => socket.off('submission-received', handleSubmission);
   }, [socket]);
-
-  const handleAutoSubmit = () => {
-    if (submitted || !room) return;
-    
-    const letter = room.currentLetter?.toLowerCase();
-    const normalized = words.map((w) => {
-      const trimmed = w.trim().toLowerCase();
-      if (!trimmed) return '';
-      return trimmed.startsWith(letter || '') ? trimmed : '';
-    });
-    
-    socket.emit('submit-words', { roomId: room.id, words: normalized });
-    setSubmitted(true);
-  };
 
   const handleWordChange = (index, value) => {
     const newWords = [...words];
@@ -156,10 +179,10 @@ function GameRound({ socket, room, playerName, isHost }) {
 
     return (
       <div className="game-round">
-        <div className="submitted-screen">
+          <div className="submitted-screen">
           <div className="submitted-icon"><CheckIcon size={32} /></div>
           <h2>Answers Submitted!</h2>
-          <p>Waiting for other players...</p>
+          <p>{autoSubmitted ? '⏰ Time\'s up! Your answers were auto-submitted.' : 'Waiting for other players...'}</p>
           
           <div className="submission-progress">
             <div className="progress-bar">

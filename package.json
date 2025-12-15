@@ -2,6 +2,11 @@
   "name": "uncommon-game",
   "version": "1.0.0",
   "type": "module",
+  "author": "Heyymant",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Heyymant/standout.git"
+  },
   "scripts": {
     "dev": "concurrently \"vite\" \"node server/index.js\"",
     "dev:client": "vite",
@@ -18,6 +23,7 @@
     "openai": "^4.20.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-qr-code": "^2.0.18",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2"
   },

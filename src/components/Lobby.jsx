@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { QRCodeSVG } from 'react-qr-code';
 import { LogoStandout, IconWifi, IconChevronDown, IconChevronUp, IconPlay, IconUsers, IconMoon, IconSun } from './Icons';
 import './Lobby.css';
 
@@ -119,8 +120,52 @@ function Lobby({ onCreateRoom, onJoinRoom }) {
           <div className="connection-info">
             <IconWifi size={20} className="info-icon" />
             <div className="info-text">
-              <strong>Playing with friends?</strong>
-              <span>Everyone connects to: <code>{window.location.origin}</code></span>
+              <strong>Share this URL with friends:</strong>
+              <div style={{ marginTop: '12px', display: 'flex', alignItems: 'flex-start', gap: '16px', flexWrap: 'wrap' }}>
+                <div style={{ flex: 1, minWidth: '200px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                    <code style={{ flex: 1, minWidth: '200px' }}>{window.location.origin}</code>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.origin);
+                        alert('URL copied to clipboard!');
+                      }}
+                      style={{
+                        padding: '6px 12px',
+                        background: 'var(--primary)',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        fontSize: '0.75rem',
+                        fontWeight: 600,
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Copy
+                    </button>
+                  </div>
+                  <div style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    gap: '8px',
+                    padding: '12px',
+                    background: 'white',
+                    borderRadius: '8px',
+                    border: '1px solid var(--border-light)'
+                  }}>
+                    <QRCodeSVG 
+                      value={window.location.origin}
+                      size={120}
+                      level="M"
+                      includeMargin={true}
+                    />
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                      Scan to join
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -181,6 +226,15 @@ function Lobby({ onCreateRoom, onJoinRoom }) {
           <span>Same WiFi network</span>
           <span className="dot"></span>
           <span>Mobile & desktop</span>
+          <span className="dot"></span>
+          <a 
+            href="https://github.com/Heyymant/standout" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="github-link"
+          >
+            Made by @Heyymant
+          </a>
         </div>
       </div>
     </div>

@@ -202,10 +202,35 @@
   font-weight: 500;
   color: var(--primary);
   background: var(--bg-card);
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: block;
   margin-top: 4px;
+  word-break: break-all;
+  border: 1px solid var(--border-light);
+}
+
+/* QR Code in Connection Info */
+.connection-info .qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border-light);
+}
+
+[data-theme="dark"] .connection-info .qr-code-container {
+  background: var(--bg-card);
+}
+
+.connection-info .qr-code-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: center;
 }
 
 /* Rules Section */
@@ -306,6 +331,7 @@
   font-size: 0.8rem;
   color: var(--text-muted);
   padding: 8px 0;
+  flex-wrap: wrap;
 }
 
 .lobby-footer .dot {
@@ -313,6 +339,18 @@
   height: 4px;
   border-radius: 50%;
   background: var(--text-muted);
+}
+
+.lobby-footer .github-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: 500;
+}
+
+.lobby-footer .github-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }
 
 /* Responsive */

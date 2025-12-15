@@ -5,11 +5,19 @@ import GameBoard from './components/GameBoard';
 import DarkModeToggle from './components/DarkModeToggle';
 import './App.css';
 
-// Auto-detect server URL based on current hostname
+// Auto-detect server URL based on environment
 const getServerUrl = () => {
+  // Check for explicit backend URL (for Vercel + separate backend)
+  if (import.meta.env.VITE_BACKEND_URL) {
+    return import.meta.env.VITE_BACKEND_URL;
+  }
+  
+  // Production: use same origin (if backend serves frontend)
   if (import.meta.env.PROD) {
     return window.location.origin;
   }
+  
+  // Development: use localhost backend
   const hostname = window.location.hostname;
   if (hostname === 'localhost' || hostname === '127.0.0.1') {
     return 'http://localhost:3001';

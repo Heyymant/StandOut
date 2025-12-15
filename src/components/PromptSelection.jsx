@@ -270,7 +270,11 @@ function PromptSelection({ socket, roomId, room, isHost }) {
 
   // Check if AI is enabled on server
   useEffect(() => {
-    fetch(`http://${window.location.hostname}:3001/api/health`)
+    // Get backend URL from environment or use same origin
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || window.location.origin;
+    const healthUrl = `${backendUrl}/api/health`;
+    
+    fetch(healthUrl)
       .then(res => res.json())
       .then(data => {
         setAiEnabled(data.aiEnabled);
