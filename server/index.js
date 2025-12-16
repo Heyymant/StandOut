@@ -832,4 +832,18 @@ httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`📱 For mobile devices on the same WiFi:`);
   console.log(`   Open: http://${localIP}:3000 in your mobile browser\n`);
   console.log(`✨ Ready for players to connect!\n`);
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n❌ Error: Port ${PORT} is already in use!\n`);
+    console.log('💡 Solutions:');
+    console.log('   1. Find and kill the process using port 3001:');
+    console.log('      PowerShell: Get-NetTCPConnection -LocalPort 3001 | Select-Object -ExpandProperty OwningProcess | Stop-Process -Force');
+    console.log('   2. Or use a different port:');
+    console.log('      Set PORT=3002 npm run dev');
+    console.log('   3. Or check if another instance is running and close it\n');
+    process.exit(1);
+  } else {
+    console.error('❌ Server error:', err);
+    process.exit(1);
+  }
 });
