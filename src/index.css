@@ -8,98 +8,117 @@
 }
 
 :root {
-  /* Light Mode - Pastel Palette */
-  --bg-base: #f5f7fa;
+  /* Nintendo Color Palette - Light Mode (Classic Nintendo Red/Blue/Yellow) */
+  --bg-base: #f0f0f0;  /* Light gray background */
   --bg-card: #ffffff;
-  --bg-soft: #f0f2f5;
-  --bg-input: #f8f9fb;
+  --bg-soft: #f8f8f8;
+  --bg-input: #ffffff;
   
-  --text-dark: #1a1d21;
-  --text-primary: #2d3136;
-  --text-secondary: #5c6370;
-  --text-muted: #9ca3af;
-  --text-light: #d1d5db;
+  --text-dark: #1a1a1a;  /* Dark text */
+  --text-primary: #2d2d2d;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --text-light: #cccccc;
   
-  --border-light: #e5e7eb;
-  --border-medium: #d1d5db;
+  --border-light: #333333;
+  --border-medium: #666666;
   
-  /* Accent colors */
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --primary-light: rgba(99, 102, 241, 0.1);
+  /* Nintendo Primary Colors */
+  --primary: #e60012;  /* Nintendo Red */
+  --primary-hover: #cc0010;
+  --primary-light: rgba(230, 0, 18, 0.15);
   
-  --accent: #f97316;
-  --accent-hover: #ea580c;
-  --accent-light: rgba(249, 115, 22, 0.1);
+  --accent: #0066cc;  /* Nintendo Blue */
+  --accent-hover: #0052a3;
+  --accent-light: rgba(0, 102, 204, 0.15);
   
-  /* Status - Pastel */
-  --success: #22c55e;
-  --success-light: rgba(34, 197, 94, 0.1);
-  --error: #ef4444;
-  --error-light: rgba(239, 68, 68, 0.1);
-  --warning: #f59e0b;
-  --warning-light: rgba(245, 158, 11, 0.1);
-  --info: #3b82f6;
-  --info-light: rgba(59, 130, 246, 0.1);
+  /* Nintendo Status colors */
+  --success: #00a652;  /* Nintendo Green */
+  --success-light: rgba(0, 166, 82, 0.15);
+  --error: #e60012;  /* Nintendo Red */
+  --error-light: rgba(230, 0, 18, 0.15);
+  --warning: #ffcc00;  /* Nintendo Yellow */
+  --warning-light: rgba(255, 204, 0, 0.15);
+  --info: #0066cc;  /* Nintendo Blue */
+  --info-light: rgba(0, 102, 204, 0.15);
   
-  /* Pastels for game elements */
-  --pastel-purple: #c4b5fd;
-  --pastel-blue: #93c5fd;
-  --pastel-green: #86efac;
-  --pastel-yellow: #fde047;
-  --pastel-orange: #fdba74;
-  --pastel-pink: #f9a8d4;
+  /* Classic Nintendo colors */
+  --nintendo-red: #e60012;
+  --nintendo-blue: #0066cc;
+  --nintendo-yellow: #ffcc00;
+  --nintendo-green: #00a652;
+  --nintendo-purple: #8b00ff;
+  --nintendo-orange: #ff6600;
   
-  /* Fonts */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'DM Sans', var(--font-sans);
-  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  /* Pixelated Fonts */
+  --font-sans: 'VT323', 'Courier New', monospace;
+  --font-display: 'Press Start 2P', 'Courier New', monospace;
+  --font-mono: 'VT323', 'Courier New', monospace;
   
-  /* Spacing & Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-full: 9999px;
+  /* Pixelated styling */
+  --pixel-size: 2px;
+  --border-width: 3px;
   
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.2s ease;
+  /* No rounded corners - pixelated look */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+  --radius-full: 0;
+  
+  /* Pixelated transitions */
+  --transition-fast: 0.1s step-end;
+  --transition-base: 0.15s step-end;
 }
 
-/* Dark Mode */
+/* Dark Mode - Nintendo Dark Theme (like NES/SNES dark mode) */
 [data-theme="dark"] {
-  --bg-base: #0f1115;
-  --bg-card: #1a1d23;
-  --bg-soft: #242830;
-  --bg-input: #1f2329;
+  --bg-base: #1a1a2e;  /* Dark blue-purple background */
+  --bg-card: #16213e;
+  --bg-soft: #0f3460;
+  --bg-input: #16213e;
   
-  --text-dark: #f9fafb;
-  --text-primary: #e5e7eb;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-light: #374151;
+  --text-dark: #eaeaea;  /* Light text */
+  --text-primary: #ffffff;
+  --text-secondary: #b8b8b8;
+  --text-muted: #888888;
+  --text-light: #555555;
   
-  --border-light: #2d3139;
-  --border-medium: #3f4451;
+  --border-light: #0066cc;  /* Nintendo Blue borders */
+  --border-medium: #0080ff;
   
-  --primary-light: rgba(99, 102, 241, 0.15);
-  --accent-light: rgba(249, 115, 22, 0.15);
-  --success-light: rgba(34, 197, 94, 0.15);
-  --error-light: rgba(239, 68, 68, 0.15);
-  --warning-light: rgba(245, 158, 11, 0.15);
-  --info-light: rgba(59, 130, 246, 0.15);
+  /* Nintendo colors - brighter in dark mode */
+  --primary: #ff3333;  /* Bright Nintendo Red */
+  --primary-hover: #ff5555;
+  --primary-light: rgba(255, 51, 51, 0.25);
   
-  --pastel-purple: #7c3aed;
-  --pastel-blue: #3b82f6;
-  --pastel-green: #22c55e;
-  --pastel-yellow: #eab308;
-  --pastel-orange: #f97316;
-  --pastel-pink: #ec4899;
+  --accent: #3399ff;  /* Bright Nintendo Blue */
+  --accent-hover: #55aaff;
+  --accent-light: rgba(51, 153, 255, 0.25);
+  
+  --success: #33cc66;  /* Bright Green */
+  --success-light: rgba(51, 204, 102, 0.25);
+  --error: #ff3333;  /* Bright Red */
+  --error-light: rgba(255, 51, 51, 0.25);
+  --warning: #ffcc00;  /* Bright Yellow */
+  --warning-light: rgba(255, 204, 0, 0.25);
+  --info: #3399ff;  /* Bright Blue */
+  --info-light: rgba(51, 153, 255, 0.25);
 }
 
 html {
   font-size: 16px;
+  /* Force pixelated rendering */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Force pixelated rendering for all elements */
+*, *::before, *::after {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 /* Initialize theme on page load */
@@ -113,12 +132,25 @@ html:not([data-theme]) {
 
 body {
   font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Pixelated rendering - no antialiasing for crisp pixels */
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
   background: var(--bg-base);
   color: var(--text-primary);
   min-height: 100vh;
   transition: background var(--transition-base), color var(--transition-base);
+  /* Subtle Nintendo-style pattern */
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.02) 4px, rgba(0,0,0,0.02) 8px);
+}
+
+[data-theme="dark"] body {
+  /* Dark mode - subtle blue tint pattern */
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 102, 204, 0.03) 4px, rgba(0, 102, 204, 0.03) 8px);
 }
 
 #root {
@@ -129,75 +161,123 @@ body {
   padding: 16px;
 }
 
-/* Base button */
+/* Pixelated Retro Button Style */
 button {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.875rem;
-  padding: 10px 20px;
-  border-radius: var(--radius-md);
-  border: none;
-  background: var(--bg-soft);
-  color: var(--text-primary);
+  font-weight: normal;
+  font-size: 0.75rem;
+  padding: 12px 20px;
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--text-dark);
   cursor: pointer;
   transition: all var(--transition-fast);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* Pixelated box shadow for 3D effect */
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
+  position: relative;
 }
 
 button:hover {
-  background: var(--border-medium);
+  background: var(--bg-soft);
+  transform: translate(1px, 1px);
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    3px 3px 0px var(--border-light);
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: translate(2px, 2px);
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5),
+    2px 2px 0px var(--border-light);
 }
 
 button:disabled {
-  opacity: 0.5;
+  opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.3);
 }
 
 button.primary {
   background: var(--primary);
-  color: white;
+  color: var(--bg-card);
+  border-color: var(--primary-hover);
+  box-shadow: 
+    inset -2px -2px 0px var(--primary-hover),
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    4px 4px 0px var(--primary-hover);
 }
 
 button.primary:hover {
   background: var(--primary-hover);
+  box-shadow: 
+    inset -2px -2px 0px var(--text-dark),
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    3px 3px 0px var(--primary-hover);
 }
 
 button.accent {
   background: var(--accent);
-  color: white;
+  color: var(--bg-card);
+  border-color: var(--accent-hover);
+  box-shadow: 
+    inset -2px -2px 0px var(--accent-hover),
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    4px 4px 0px var(--accent-hover);
 }
 
 button.accent:hover {
   background: var(--accent-hover);
+  box-shadow: 
+    inset -2px -2px 0px var(--text-dark),
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    3px 3px 0px var(--accent-hover);
 }
 
-/* Input */
+/* Pixelated Retro Input Style */
 input {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 1.1rem;
   padding: 12px 16px;
-  border: 2px solid var(--border-light);
-  border-radius: var(--radius-md);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   background: var(--bg-input);
-  color: var(--text-primary);
-  transition: border-color var(--transition-fast);
+  color: var(--text-dark);
+  transition: all var(--transition-fast);
   width: 100%;
+  /* Pixelated look */
+  box-shadow: 
+    inset 2px 2px 0px var(--border-medium),
+    inset -2px -2px 0px rgba(255,255,255,0.5);
 }
 
 input::placeholder {
   color: var(--text-muted);
+  font-style: italic;
 }
 
 input:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 
+    inset 2px 2px 0px var(--primary),
+    inset -2px -2px 0px rgba(255,255,255,0.5),
+    0 0 0 2px var(--primary-light);
 }
 
 /* Icon base */
@@ -214,6 +294,29 @@ input:focus {
   height: 100%;
 }
 
+/* Nintendo-style Pixelated scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+  border: 2px solid var(--border-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);  /* Nintendo Red */
+  border: 2px solid var(--border-light);
+  box-shadow: 
+    inset -1px -1px 0px rgba(0,0,0,0.3),
+    inset 1px 1px 0px rgba(255,255,255,0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
 /* Responsive breakpoints */
 @media (max-width: 768px) {
   html {
@@ -227,6 +330,7 @@ input:focus {
   button {
     padding: 12px 20px;
     min-height: 44px;
+    font-size: 0.7rem;
   }
 
   input {
@@ -243,5 +347,10 @@ input:focus {
   
   #root {
     padding: 8px;
+  }
+  
+  button {
+    font-size: 0.65rem;
+    padding: 10px 16px;
   }
 }

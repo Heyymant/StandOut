@@ -35,10 +35,14 @@
   flex-direction: column;
   padding: 1rem 1.25rem;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   margin-bottom: 1rem;
   gap: 1rem;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .round-header-top {
@@ -75,8 +79,12 @@
 }
 
 .used-letter.current {
-  background: var(--primary);
-  color: white;
+  background: var(--primary);  /* Nintendo Red */
+  color: var(--bg-card);
+  border: 2px solid var(--primary-hover);
+  box-shadow: 
+    inset -1px -1px 0px var(--primary-hover),
+    inset 1px 1px 0px rgba(255,255,255,0.3);
 }
 
 /* Letter Display */
@@ -93,15 +101,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--pastel-purple);
-  border-radius: 14px;
+  background: var(--primary);  /* Nintendo Red */
+  border-radius: 0;
+  border: 3px solid var(--primary-hover);
+  box-shadow: 
+    inset -2px -2px 0px var(--primary-hover),
+    inset 2px 2px 0px rgba(255,255,255,0.3),
+    4px 4px 0px var(--border-light);
 }
 
 .letter {
   font-family: var(--font-display);
   font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-weight: normal;
+  color: var(--bg-card);
+  text-shadow: 
+    2px 2px 0px var(--primary-hover),
+    4px 4px 0px rgba(0,0,0,0.2);
 }
 
 .letter-hint {
@@ -207,9 +223,12 @@
   gap: 8px;
   padding: 12px 14px;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  transition: border-color 0.15s;
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
+  transition: all 0.1s step-end;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .prompt-row.valid {
@@ -234,18 +253,22 @@
 }
 
 .prompt-number {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-light);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: var(--text-dark);
+  background: var(--bg-soft);
   width: 22px;
   height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border: 2px solid var(--border-light);
+  border-radius: 0;
   flex-shrink: 0;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .prompt-text {
@@ -261,9 +284,13 @@
   width: 100%;
   padding: 10px 36px 10px 12px;
   background: var(--bg-input);
-  border: 2px solid transparent;
-  border-radius: 8px;
-  font-size: 1rem;
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
+  font-size: 1.1rem;
+  font-family: var(--font-sans);
+  box-shadow: 
+    inset 2px 2px 0px var(--border-medium),
+    inset -2px -2px 0px rgba(255,255,255,0.5);
 }
 
 .word-input:focus {
@@ -291,8 +318,12 @@
   justify-content: space-between;
   padding: 12px 16px;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
   margin-top: 1rem;
 }
 

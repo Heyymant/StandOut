@@ -18,9 +18,13 @@
   align-items: center;
   padding: 1rem;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   gap: 1rem;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .voting-title h2 {
@@ -42,7 +46,11 @@
   color: var(--text-secondary);
   background: var(--bg-soft);
   padding: 10px 14px;
-  border-radius: var(--radius-md);
+  border: 2px solid var(--border-light);
+  border-radius: 0;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .letter-badge span {
@@ -127,9 +135,13 @@
 /* Prompt Voting Section */
 .prompt-voting-section {
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   overflow: hidden;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .prompt-header {
@@ -181,9 +193,13 @@
   justify-content: space-between;
   padding: 12px;
   background: var(--bg-soft);
-  border-radius: var(--radius-md);
+  border: 2px solid var(--border-light);
+  border-radius: 0;
   gap: 10px;
   flex-wrap: wrap;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .answer-card.my-answer {

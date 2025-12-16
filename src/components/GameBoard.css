@@ -4,8 +4,11 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.2s step-end;
   margin: 0 auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 @keyframes fadeIn {
@@ -13,18 +16,23 @@
   to { opacity: 1; }
 }
 
-/* Game Header */
+/* Game Header - Pixelated Style */
 .game-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 14px;
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   margin-bottom: 1rem;
   gap: 12px;
   flex-wrap: wrap;
+  /* Pixelated box shadow */
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .header-left {
@@ -34,14 +42,20 @@
 }
 
 .room-badge {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary);
-  background: var(--primary-light);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: var(--bg-card);
+  background: var(--primary);  /* Nintendo Red */
   padding: 6px 12px;
-  border-radius: var(--radius-full);
-  letter-spacing: 1px;
+  border: 2px solid var(--border-light);
+  border-radius: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 
+    inset -1px -1px 0px var(--primary-hover),
+    inset 1px 1px 0px rgba(255,255,255,0.3),
+    2px 2px 0px var(--border-light);
 }
 
 .player-count {
@@ -71,26 +85,39 @@
 .progress-dot {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: normal;
   background: var(--bg-soft);
   color: var(--text-muted);
-  transition: all 0.2s;
+  border: 2px solid var(--border-light);
+  transition: all 0.1s step-end;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .progress-dot.completed {
-  background: var(--success-light);
-  color: var(--success);
+  background: var(--success);
+  color: var(--bg-card);
+  border-color: var(--success);
+  box-shadow: 
+    inset -1px -1px 0px var(--text-dark),
+    inset 1px 1px 0px rgba(255,255,255,0.3);
 }
 
 .progress-dot.active {
   background: var(--primary);
-  color: white;
+  color: var(--bg-card);
+  border-color: var(--primary-hover);
+  box-shadow: 
+    inset -1px -1px 0px var(--text-dark),
+    inset 1px 1px 0px rgba(255,255,255,0.3),
+    2px 2px 0px var(--primary-hover);
 }
 
 .header-right {
@@ -158,9 +185,13 @@
 
 .connection-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   padding: 1.25rem;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .connection-card h3 {
@@ -355,11 +386,15 @@
 /* Players Panel */
 .players-panel {
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border: var(--border-width) solid var(--border-light);
+  border-radius: 0;
   padding: 1rem;
   margin-bottom: 1rem;
   text-align: left;
+  box-shadow: 
+    inset -2px -2px 0px var(--border-medium),
+    inset 2px 2px 0px rgba(255,255,255,0.5),
+    4px 4px 0px var(--border-light);
 }
 
 .players-panel h3 {
@@ -381,7 +416,11 @@
   gap: 6px;
   padding: 8px 12px;
   background: var(--bg-soft);
-  border-radius: var(--radius-full);
+  border: 2px solid var(--border-light);
+  border-radius: 0;
+  box-shadow: 
+    inset -1px -1px 0px var(--border-medium),
+    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .player-card.you {
