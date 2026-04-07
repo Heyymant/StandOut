@@ -6,7 +6,7 @@ import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { generateAIPrompts, isAIConfigured } from './aiPrompts.js';
+import { generateAIPrompts, isAIConfigured, validateAnswersWithAI } from './aiPrompts.js';
 
 // Load environment variables
 dotenv.config();
@@ -55,6 +55,29 @@ app.get('/api/prompts', async (req, res) => {
       error: 'Failed to generate prompts',
       prompts: [] 
     });
+  }
+});
+
+app.post('/api/validate-answers', async (req, res) => {
+  try {
+    const { prompts, letter, words } = req.body;
+
+    if (!prompts || !letter || !words || !Array.isArray(prompts) || !Array.isArray(words)) {
+      return res.status(400).json({ success: false, error: 'Missing required fields: prompts, letter, words' });
+    }
+
+    console.log(`🎯 Solo mode: Validating ${words.length} answers for letter "${letter}"`);
+    const results = await validateAnswersWithAI(prompts, letter, words);
+
+    res.json({
+      success: true,
+      results,
+      aiEnabled: isAIConfigured(),
+      provider: process.env.AI_PROVIDER || 'openai'
+    });
+  } catch (error) {
+    console.error('Error validating answers:', error);
+    res.status(500).json({ success: false, error: 'Failed to validate answers' });
   }
 });
 

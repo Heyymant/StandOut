@@ -627,4 +627,125 @@ function getAllFactualPrompts() {
   return FACTUAL_PROMPTS;
 }
 
-export { generateAIPrompts, getRandomFallbackPrompts, isAIConfigured, getAllFactualPrompts, FACTUAL_PROMPTS };
+/**
+ * Validate answers using AI for solo mode
+ * Returns per-answer: { valid, score (0|1|2), reason }
+ */
+async function validateAnswersWithAI(prompts, letter, words) {
+  const client = getAIClient();
+  const letterLower = letter.toLowerCase();
+
+  const results = prompts.map((prompt, i) => {
+    const word = (words[i] || '').trim();
+    if (!word) {
+      return { valid: false, score: 0, reason: 'No answer provided' };
+    }
+    if (!word.toLowerCase().startsWith(letterLower)) {
+      return { valid: false, score: 0, reason: `Answer must start with the letter "${letter.toUpperCase()}"` };
+    }
+    return null;
+  });
+
+  const indicesToValidate = results
+    .map((r, i) => (r === null ? i : -1))
+    .filter(i => i !== -1);
+
+  if (indicesToValidate.length === 0) {
+    return results;
+  }
+
+  if (!client) {
+    indicesToValidate.forEach(i => {
+      results[i] = { valid: true, score: 1, reason: 'Basic validation only (no AI configured)' };
+    });
+    return results;
+  }
+
+  const provider = process.env.AI_PROVIDER || 'openai';
+  const model = provider === 'deepseek' ? 'deepseek-chat' : 'gpt-3.5-turbo';
+
+  const pairsToValidate = indicesToValidate.map(i => ({
+    index: i,
+    prompt: prompts[i],
+    answer: words[i].trim()
+  }));
+
+  const systemPrompt = `You are a strict but fair judge for STANDOUT, a word game where players answer prompts with words starting with a specific letter.
+
+Your job is to evaluate each answer for:
+1. VALIDITY: Is the answer a correct/real response to the prompt? The answer must genuinely fit the category.
+2. CREATIVITY: How common or uncommon is this answer?
+
+Scoring:
+- 0 points: INVALID - The answer does not fit the prompt, is not a real thing, or is nonsensical.
+- 1 point: VALID BUT COMMON - The answer is correct but it's the most obvious/popular response most people would give.
+- 2 points: VALID AND CREATIVE - The answer is correct AND it's an uncommon, clever, or unexpected response that most people wouldn't think of.
+
+Be generous with validity - if the answer reasonably fits, accept it. Be strict with creativity - only award 2 points for truly uncommon answers.
+
+IMPORTANT: Return ONLY a valid JSON array with no markdown formatting. Each element must have exactly these fields: "valid" (boolean), "score" (number 0, 1, or 2), "reason" (short string explaining your judgment).`;
+
+  const userPrompt = `Letter: "${letter.toUpperCase()}"
+
+Evaluate these answers (all start with the correct letter):
+${pairsToValidate.map((p, idx) => `${idx + 1}. Prompt: "${p.prompt}" → Answer: "${p.answer}"`).join('\n')}
+
+Return a JSON array of ${pairsToValidate.length} objects: [{"valid": true/false, "score": 0|1|2, "reason": "brief explanation"}]`;
+
+  try {
+    console.log(`🤖 Validating ${pairsToValidate.length} answers with AI (${provider})...`);
+
+    const response = await client.chat.completions.create({
+      model,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: userPrompt }
+      ],
+      temperature: 0.3,
+      max_tokens: 800,
+    });
+
+    const content = response.choices[0]?.message?.content?.trim();
+
+    let aiResults;
+    try {
+      const jsonMatch = content.match(/\[[\s\S]*\]/);
+      if (jsonMatch) {
+        aiResults = JSON.parse(jsonMatch[0]);
+      } else {
+        throw new Error('No JSON array found in AI response');
+      }
+    } catch (parseError) {
+      console.error('Failed to parse AI validation response:', content);
+      indicesToValidate.forEach(i => {
+        results[i] = { valid: true, score: 1, reason: 'AI response could not be parsed - awarded default score' };
+      });
+      return results;
+    }
+
+    pairsToValidate.forEach((pair, idx) => {
+      const aiResult = aiResults[idx];
+      if (aiResult && typeof aiResult.valid === 'boolean' && typeof aiResult.score === 'number') {
+        results[pair.index] = {
+          valid: aiResult.valid,
+          score: Math.min(2, Math.max(0, Math.round(aiResult.score))),
+          reason: aiResult.reason || (aiResult.valid ? 'Valid answer' : 'Invalid answer')
+        };
+      } else {
+        results[pair.index] = { valid: true, score: 1, reason: 'AI returned incomplete result - awarded default score' };
+      }
+    });
+
+    console.log('✅ AI validation complete:', results);
+    return results;
+
+  } catch (error) {
+    console.error('AI validation failed:', error.message);
+    indicesToValidate.forEach(i => {
+      results[i] = { valid: true, score: 1, reason: 'AI validation unavailable - awarded default score' };
+    });
+    return results;
+  }
+}
+
+export { generateAIPrompts, getRandomFallbackPrompts, isAIConfigured, getAllFactualPrompts, FACTUAL_PROMPTS, validateAnswersWithAI };

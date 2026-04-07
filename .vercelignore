@@ -1,0 +1,10 @@
+# Files to ignore when deploying to Vercel
+server/
+node_modules/
+.env
+.env.local
+*.md
+render.yaml
+railway.json
+package-server.json
+

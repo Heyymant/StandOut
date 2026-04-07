@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { LogoStandout, IconWifi, IconChevronDown, IconChevronUp, IconPlay, IconUsers, IconMoon, IconSun } from './Icons';
+import { LogoStandout, IconWifi, IconChevronDown, IconChevronUp, IconPlay, IconUsers, IconMoon, IconSun, IconRobot } from './Icons';
 import './Lobby.css';
 
-function Lobby({ onCreateRoom, onJoinRoom }) {
+function Lobby({ onCreateRoom, onJoinRoom, onStartSolo }) {
   const [playerName, setPlayerName] = useState('');
   const [roomId, setRoomId] = useState('');
   const [mode, setMode] = useState('create');
@@ -24,7 +24,9 @@ function Lobby({ onCreateRoom, onJoinRoom }) {
       return;
     }
     
-    if (mode === 'create') {
+    if (mode === 'solo') {
+      onStartSolo(trimmedName);
+    } else if (mode === 'create') {
       onCreateRoom(trimmedName);
     } else {
       const trimmedRoomId = roomId.trim();
@@ -68,6 +70,12 @@ function Lobby({ onCreateRoom, onJoinRoom }) {
             >
               Join Room
             </button>
+            <button
+              className={mode === 'solo' ? 'active' : ''}
+              onClick={() => setMode('solo')}
+            >
+              Solo Mode
+            </button>
           </div>
 
           {/* Form */}
@@ -101,11 +109,23 @@ function Lobby({ onCreateRoom, onJoinRoom }) {
               </div>
             )}
 
+            {mode === 'solo' && (
+              <div className="solo-mode-info">
+                <IconRobot size={20} className="solo-icon" />
+                <p>Play solo with AI as your judge! The AI will validate your answers and rate creativity.</p>
+              </div>
+            )}
+
             <button type="submit" className="submit-btn">
               {mode === 'create' ? (
                 <>
                   <IconPlay size={18} />
                   Create Room
+                </>
+              ) : mode === 'solo' ? (
+                <>
+                  <IconRobot size={18} />
+                  Start Solo Game
                 </>
               ) : (
                 <>

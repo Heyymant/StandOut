@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { io } from 'socket.io-client';
 import Lobby from './components/Lobby';
 import GameBoard from './components/GameBoard';
+import SoloGame from './components/SoloGame';
 import DarkModeToggle from './components/DarkModeToggle';
 import './App.css';
 
@@ -46,6 +47,8 @@ function App() {
   const [playerName, setPlayerName] = useState('');
   const [isHost, setIsHost] = useState(false);
   const [notification, setNotification] = useState(null);
+  const [isSoloMode, setIsSoloMode] = useState(false);
+  const [soloPlayerName, setSoloPlayerName] = useState('');
 
   // Show notification
   const showNotification = useCallback((message, type = 'info', duration = 3000) => {
@@ -218,6 +221,16 @@ function App() {
     }
   };
 
+  const handleStartSolo = (name) => {
+    setSoloPlayerName(name.trim());
+    setIsSoloMode(true);
+  };
+
+  const handleLeaveSolo = () => {
+    setIsSoloMode(false);
+    setSoloPlayerName('');
+  };
+
   const handleLeaveRoom = () => {
     // Prevent leaving during active gameplay
     if (room && (room.gameState === 'playing' || room.gameState === 'voting')) {
@@ -310,10 +323,16 @@ function App() {
         </div>
       )}
 
-      {gameState === 'lobby' && !room ? (
+      {isSoloMode ? (
+        <SoloGame
+          playerName={soloPlayerName}
+          onLeave={handleLeaveSolo}
+        />
+      ) : gameState === 'lobby' && !room ? (
         <Lobby
           onCreateRoom={handleCreateRoom}
           onJoinRoom={handleJoinRoom}
+          onStartSolo={handleStartSolo}
         />
       ) : room ? (
         <GameBoard

@@ -1,0 +1,474 @@
+/* ===== Solo Game Styles ===== */
+
+.solo-game {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Solo Badge in Header */
+.solo-badge {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+}
+
+.solo-score-badge {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* ===== Validating Screen ===== */
+.solo-validating {
+  padding: 2rem 1rem;
+}
+
+.validating-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 0 16px rgba(99, 102, 241, 0); }
+}
+
+.validating-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.dot-bounce {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary);
+  animation: dot-bounce-anim 1.4s ease-in-out infinite both;
+}
+
+.dot-bounce:nth-child(1) { animation-delay: 0s; }
+.dot-bounce:nth-child(2) { animation-delay: 0.16s; }
+.dot-bounce:nth-child(3) { animation-delay: 0.32s; }
+
+@keyframes dot-bounce-anim {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.solo-mode-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ===== Solo Review Round ===== */
+.solo-review {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Scoring Legend */
+.solo-scoring-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.solo-scoring-legend .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.solo-scoring-legend .legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.solo-scoring-legend .legend-item.creative .legend-dot { background: var(--success); }
+.solo-scoring-legend .legend-item.common .legend-dot { background: var(--pastel-blue); }
+.solo-scoring-legend .legend-item.invalid-legend .legend-dot { background: var(--error); }
+
+/* Results Cards */
+.solo-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.solo-result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.solo-result-card.creative {
+  border-color: var(--success);
+}
+
+.solo-result-card.common {
+  border-color: var(--pastel-blue);
+}
+
+.solo-result-card.invalid {
+  border-color: var(--error);
+}
+
+.result-prompt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.result-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.result-answer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.result-answer-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.result-answer-word {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.result-verdict-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  flex: 1;
+  min-width: 180px;
+}
+
+.verdict-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.verdict-badge.creative {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.verdict-badge.common {
+  background: rgba(96, 165, 250, 0.15);
+  color: var(--pastel-blue);
+}
+
+.verdict-badge.invalid {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.creative-star {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.verdict-reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  text-align: right;
+}
+
+.verdict-reason svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--text-muted);
+}
+
+/* Round Summary */
+.solo-round-summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.summary-scores {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.summary-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-value {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.summary-value.round-score { color: var(--success); }
+.summary-value.total-score { color: var(--primary); }
+
+/* ===== Solo Finished ===== */
+.solo-finished {
+  padding: 0.5rem;
+}
+
+.solo-trophy {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.solo-final-score-card {
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.final-score-big {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.final-score-max {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.final-score-bar-container {
+  margin-bottom: 8px;
+}
+
+.final-score-bar {
+  height: 10px;
+  background: var(--bg-soft);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.final-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 5px;
+  transition: width 1s ease;
+}
+
+.final-score-pct {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Solo Round Details in History */
+.solo-round-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.solo-history-round {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.solo-history-answers {
+  padding: 6px;
+}
+
+.solo-history-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+}
+
+.solo-history-row.creative { background: var(--success-light); }
+.solo-history-row.common { background: rgba(96, 165, 250, 0.1); }
+.solo-history-row.invalid { background: var(--error-light); opacity: 0.75; }
+
+.solo-history-prompt {
+  flex: 1;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  min-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.solo-history-answer {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  min-width: 70px;
+}
+
+.solo-history-verdict {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 30px;
+}
+
+.solo-history-row.creative .solo-history-verdict { color: var(--success); }
+.solo-history-row.common .solo-history-verdict { color: var(--pastel-blue); }
+.solo-history-row.invalid .solo-history-verdict { color: var(--error); }
+
+.solo-history-reason {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.solo-history-reason svg {
+  flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .result-content {
+    flex-direction: column;
+  }
+
+  .result-verdict-section {
+    align-items: flex-start;
+  }
+
+  .verdict-reason {
+    text-align: left;
+  }
+
+  .solo-scoring-legend {
+    gap: 10px;
+  }
+
+  .solo-final-score-card {
+    padding: 1.25rem;
+  }
+
+  .final-score-big {
+    font-size: 2.75rem;
+  }
+
+  .summary-scores {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .solo-result-card {
+    border-radius: var(--radius-md);
+  }
+
+  .result-prompt-header {
+    padding: 8px 10px;
+  }
+
+  .result-content {
+    padding: 10px;
+  }
+}
