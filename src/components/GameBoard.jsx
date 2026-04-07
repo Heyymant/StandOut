@@ -144,6 +144,8 @@ function GameBoard({ socket, room, playerName, isHost, gameState, onLeaveRoom })
                   size={150}
                   level="M"
                   includeMargin={true}
+                  bgColor="transparent"
+                  fgColor="#e8a44a"
                 />
                 <span className="qr-code-label">Scan QR code to join</span>
               </div>

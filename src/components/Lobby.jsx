@@ -164,25 +164,16 @@ function Lobby({ onCreateRoom, onJoinRoom, onStartSolo }) {
                       Copy
                     </button>
                   </div>
-                  <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    alignItems: 'center', 
-                    gap: '8px',
-                    padding: '12px',
-                    background: 'white',
-                    borderRadius: '8px',
-                    border: '1px solid var(--border-light)'
-                  }}>
+                  <div className="qr-code-container">
                     <QRCodeSVG 
                       value={window.location.origin}
                       size={120}
                       level="M"
                       includeMargin={true}
+                      bgColor="transparent"
+                      fgColor="#e8a44a"
                     />
-                    <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                      Scan to join
-                    </span>
+                    <span className="qr-code-label">Scan to join</span>
                   </div>
                 </div>
               </div>

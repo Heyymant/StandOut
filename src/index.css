@@ -1,5 +1,5 @@
-/* Pixelated Retro Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+/* CRT Retro Indie Fonts */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap');
 
 * {
   margin: 0;
@@ -8,149 +8,132 @@
 }
 
 :root {
-  /* Nintendo Color Palette - Light Mode (Classic Nintendo Red/Blue/Yellow) */
-  --bg-base: #f0f0f0;  /* Light gray background */
-  --bg-card: #ffffff;
-  --bg-soft: #f8f8f8;
-  --bg-input: #ffffff;
-  
-  --text-dark: #1a1a1a;  /* Dark text */
-  --text-primary: #2d2d2d;
-  --text-secondary: #666666;
-  --text-muted: #999999;
-  --text-light: #cccccc;
-  
-  --border-light: #333333;
-  --border-medium: #666666;
-  
-  /* Nintendo Primary Colors */
-  --primary: #e60012;  /* Nintendo Red */
-  --primary-hover: #cc0010;
-  --primary-light: rgba(230, 0, 18, 0.15);
-  
-  --accent: #0066cc;  /* Nintendo Blue */
-  --accent-hover: #0052a3;
-  --accent-light: rgba(0, 102, 204, 0.15);
-  
-  /* Nintendo Status colors */
-  --success: #00a652;  /* Nintendo Green */
-  --success-light: rgba(0, 166, 82, 0.15);
-  --error: #e60012;  /* Nintendo Red */
-  --error-light: rgba(230, 0, 18, 0.15);
-  --warning: #ffcc00;  /* Nintendo Yellow */
-  --warning-light: rgba(255, 204, 0, 0.15);
-  --info: #0066cc;  /* Nintendo Blue */
-  --info-light: rgba(0, 102, 204, 0.15);
-  
-  /* Classic Nintendo colors */
-  --nintendo-red: #e60012;
-  --nintendo-blue: #0066cc;
-  --nintendo-yellow: #ffcc00;
-  --nintendo-green: #00a652;
-  --nintendo-purple: #8b00ff;
-  --nintendo-orange: #ff6600;
-  
-  /* Pixelated Fonts */
-  --font-sans: 'VT323', 'Courier New', monospace;
+  /* ─── CRT Dark Theme ─── */
+  --bg-base: #0a0e14;
+  --bg-card: #111820;
+  --bg-soft: #161d27;
+  --bg-input: #0d1117;
+
+  --text-dark: #e8dcc8;
+  --text-primary: #d4c8b0;
+  --text-secondary: #8a8070;
+  --text-muted: #5c5548;
+  --text-light: #3a352e;
+
+  --border-light: #2a3040;
+  --border-medium: #1e2530;
+
+  /* CRT Phosphor accent colors */
+  --primary: #e8a44a;
+  --primary-hover: #d4903a;
+  --primary-light: rgba(232, 164, 74, 0.12);
+
+  --accent: #5ba4cf;
+  --accent-hover: #4a90b8;
+  --accent-light: rgba(91, 164, 207, 0.12);
+
+  --success: #7ec87e;
+  --success-light: rgba(126, 200, 126, 0.12);
+  --error: #d46a6a;
+  --error-light: rgba(212, 106, 106, 0.12);
+  --warning: #d4b85c;
+  --warning-light: rgba(212, 184, 92, 0.12);
+  --info: #5ba4cf;
+  --info-light: rgba(91, 164, 207, 0.12);
+
+  --pastel-blue: #5ba4cf;
+  --pastel-yellow: #d4b85c;
+
+  /* CRT Glow */
+  --crt-glow: rgba(232, 164, 74, 0.03);
+  --crt-scanline: rgba(0, 0, 0, 0.12);
+  --crt-vignette: rgba(0, 0, 0, 0.6);
+
+  /* Fonts: readable mono for body, pixel for headings */
+  --font-sans: 'IBM Plex Mono', 'Courier New', monospace;
   --font-display: 'Press Start 2P', 'Courier New', monospace;
-  --font-mono: 'VT323', 'Courier New', monospace;
-  
-  /* Pixelated styling */
-  --pixel-size: 2px;
-  --border-width: 3px;
-  
-  /* No rounded corners - pixelated look */
-  --radius-sm: 0;
-  --radius-md: 0;
-  --radius-lg: 0;
-  --radius-xl: 0;
-  --radius-full: 0;
-  
-  /* Pixelated transitions */
-  --transition-fast: 0.1s step-end;
-  --transition-base: 0.15s step-end;
+  --font-mono: 'Space Mono', 'IBM Plex Mono', monospace;
+
+  --border-width: 2px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-full: 100px;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
 }
 
-/* Dark Mode - Nintendo Dark Theme (like NES/SNES dark mode) */
-[data-theme="dark"] {
-  --bg-base: #1a1a2e;  /* Dark blue-purple background */
-  --bg-card: #16213e;
-  --bg-soft: #0f3460;
-  --bg-input: #16213e;
-  
-  --text-dark: #eaeaea;  /* Light text */
-  --text-primary: #ffffff;
-  --text-secondary: #b8b8b8;
-  --text-muted: #888888;
-  --text-light: #555555;
-  
-  --border-light: #0066cc;  /* Nintendo Blue borders */
-  --border-medium: #0080ff;
-  
-  /* Nintendo colors - brighter in dark mode */
-  --primary: #ff3333;  /* Bright Nintendo Red */
-  --primary-hover: #ff5555;
-  --primary-light: rgba(255, 51, 51, 0.25);
-  
-  --accent: #3399ff;  /* Bright Nintendo Blue */
-  --accent-hover: #55aaff;
-  --accent-light: rgba(51, 153, 255, 0.25);
-  
-  --success: #33cc66;  /* Bright Green */
-  --success-light: rgba(51, 204, 102, 0.25);
-  --error: #ff3333;  /* Bright Red */
-  --error-light: rgba(255, 51, 51, 0.25);
-  --warning: #ffcc00;  /* Bright Yellow */
-  --warning-light: rgba(255, 204, 0, 0.25);
-  --info: #3399ff;  /* Bright Blue */
-  --info-light: rgba(51, 153, 255, 0.25);
+/* ─── Light mode override (subtle parchment CRT) ─── */
+[data-theme="light"] {
+  --bg-base: #1a1e24;
+  --bg-card: #1e2228;
+  --bg-soft: #24292e;
+  --bg-input: #181c22;
+
+  --text-dark: #f0e6d2;
+  --text-primary: #e0d4be;
+  --text-secondary: #a09580;
+  --text-muted: #6a6050;
+  --text-light: #4a4540;
+
+  --border-light: #333840;
+  --border-medium: #282d34;
 }
 
 html {
-  font-size: 18px;  /* Increased from 16px for better readability */
-  /* Force pixelated rendering */
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-/* Force pixelated rendering for all elements */
-*, *::before, *::after {
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-}
-
-/* Initialize theme on page load */
-html[data-theme="dark"] {
-  color-scheme: dark;
-}
-
+html[data-theme="dark"],
 html:not([data-theme]) {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
   font-family: var(--font-sans);
-  /* Pixelated rendering - no antialiasing for crisp pixels */
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: unset;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background: var(--bg-base);
   color: var(--text-primary);
   min-height: 100vh;
+  overflow-x: hidden;
   transition: background var(--transition-base), color var(--transition-base);
-  /* Subtle Nintendo-style pattern */
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.02) 4px, rgba(0,0,0,0.02) 8px);
 }
 
-[data-theme="dark"] body {
-  /* Dark mode - subtle blue tint pattern */
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0, 102, 204, 0.03) 4px, rgba(0, 102, 204, 0.03) 8px);
+/* ─── CRT Scanline + Vignette overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      var(--crt-scanline) 2px,
+      var(--crt-scanline) 4px
+    );
+  mix-blend-mode: multiply;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    var(--crt-vignette) 100%
+  );
 }
 
 #root {
@@ -159,17 +142,18 @@ body {
   align-items: center;
   justify-content: center;
   padding: 16px;
+  position: relative;
 }
 
-/* Pixelated Retro Button Style */
+/* ─── CRT Retro Button ─── */
 button {
-  font-family: var(--font-display);
-  font-weight: normal;
-  font-size: 0.85rem;  /* Increased from 0.75rem */
-  padding: 12px 20px;
-  border: var(--border-width) solid var(--border-light);
-  border-radius: 0;
-  background: var(--bg-card);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 10px 18px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg-soft);
   color: var(--text-dark);
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -178,179 +162,119 @@ button {
   justify-content: center;
   gap: 8px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  /* Pixelated box shadow for 3D effect */
-  box-shadow: 
-    inset -2px -2px 0px var(--border-medium),
-    inset 2px 2px 0px rgba(255,255,255,0.5),
-    4px 4px 0px var(--border-light);
+  letter-spacing: 1.5px;
   position: relative;
+  box-shadow: none;
 }
 
 button:hover {
-  background: var(--bg-soft);
-  transform: translate(1px, 1px);
-  box-shadow: 
-    inset -2px -2px 0px var(--border-medium),
-    inset 2px 2px 0px rgba(255,255,255,0.5),
-    3px 3px 0px var(--border-light);
+  background: var(--border-light);
+  color: var(--text-dark);
+  border-color: var(--primary);
+  box-shadow: 0 0 8px var(--crt-glow);
 }
 
 button:active {
-  transform: translate(2px, 2px);
-  box-shadow: 
-    inset -1px -1px 0px var(--border-medium),
-    inset 1px 1px 0px rgba(255,255,255,0.5),
-    2px 2px 0px var(--border-light);
+  transform: scale(0.98);
 }
 
 button:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
   transform: none;
-  box-shadow: 
-    inset -2px -2px 0px var(--border-medium),
-    inset 2px 2px 0px rgba(255,255,255,0.3);
 }
 
 button.primary {
   background: var(--primary);
-  color: var(--bg-card);
+  color: var(--bg-base);
   border-color: var(--primary-hover);
-  box-shadow: 
-    inset -2px -2px 0px var(--primary-hover),
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    4px 4px 0px var(--primary-hover);
 }
 
 button.primary:hover {
   background: var(--primary-hover);
-  box-shadow: 
-    inset -2px -2px 0px var(--text-dark),
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    3px 3px 0px var(--primary-hover);
+  box-shadow: 0 0 12px rgba(232, 164, 74, 0.25);
 }
 
 button.accent {
   background: var(--accent);
-  color: var(--bg-card);
+  color: var(--bg-base);
   border-color: var(--accent-hover);
-  box-shadow: 
-    inset -2px -2px 0px var(--accent-hover),
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    4px 4px 0px var(--accent-hover);
 }
 
 button.accent:hover {
   background: var(--accent-hover);
-  box-shadow: 
-    inset -2px -2px 0px var(--text-dark),
-    inset 2px 2px 0px rgba(255,255,255,0.3),
-    3px 3px 0px var(--accent-hover);
+  box-shadow: 0 0 12px rgba(91, 164, 207, 0.25);
 }
 
-/* Pixelated Retro Input Style */
+/* ─── CRT Retro Input ─── */
 input {
   font-family: var(--font-sans);
-  font-size: 1.2rem;  /* Increased from 1.1rem */
-  padding: 12px 16px;
-  border: var(--border-width) solid var(--border-light);
-  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   background: var(--bg-input);
   color: var(--text-dark);
   transition: all var(--transition-fast);
   width: 100%;
-  /* Pixelated look */
-  box-shadow: 
-    inset 2px 2px 0px var(--border-medium),
-    inset -2px -2px 0px rgba(255,255,255,0.5);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 input::placeholder {
   color: var(--text-muted);
-  font-style: italic;
+  font-style: normal;
 }
 
 input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 
-    inset 2px 2px 0px var(--primary),
-    inset -2px -2px 0px rgba(255,255,255,0.5),
-    0 0 0 2px var(--primary-light);
+  box-shadow:
+    inset 0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 2px var(--primary-light),
+    0 0 10px var(--crt-glow);
 }
 
-/* Icon base */
-.icon {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Nintendo-style Pixelated scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-soft);
-  border: 2px solid var(--border-light);
+  background: var(--bg-base);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);  /* Nintendo Red */
-  border: 2px solid var(--border-light);
-  box-shadow: 
-    inset -1px -1px 0px rgba(0,0,0,0.3),
-    inset 1px 1px 0px rgba(255,255,255,0.3);
+  background: var(--border-light);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-hover);
+  background: var(--primary);
 }
 
-/* Responsive breakpoints */
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
-  html {
-    font-size: 17px;  /* Increased from 15px */
-  }
-  
-  #root {
-    padding: 12px;
-  }
-
+  html { font-size: 15px; }
+  #root { padding: 8px; }
   button {
-    padding: 12px 20px;
+    padding: 10px 16px;
     min-height: 44px;
-    font-size: 0.8rem;  /* Increased from 0.7rem */
+    font-size: 0.75rem;
   }
-
   input {
-    padding: 14px 16px;
-    font-size: 18px;  /* Increased from 16px */
+    padding: 14px;
+    font-size: 16px;
     min-height: 48px;
   }
 }
 
 @media (max-width: 480px) {
-  html {
-    font-size: 16px;  /* Increased from 14px */
-  }
-  
-  #root {
-    padding: 8px;
-  }
-  
+  html { font-size: 14px; }
+  #root { padding: 4px; }
   button {
-    font-size: 0.75rem;  /* Increased from 0.65rem */
-    padding: 10px 16px;
+    font-size: 0.7rem;
+    padding: 8px 14px;
   }
 }

@@ -157,35 +157,33 @@ function SoloGameRound({
 
   return (
     <div className="game-round">
+      {/* Sticky HUD - always visible */}
+      <div className="sticky-hud">
+        <div className="hud-letter-box">
+          <span className="hud-letter">{currentLetter}</span>
+        </div>
+        <div className="hud-info">
+          <span className="hud-round">Round {currentRound}/{totalRounds}</span>
+          <span className="hud-hint">Words starting with "{currentLetter}"</span>
+        </div>
+        <div className={`hud-timer ${timeLeft <= 10 ? 'warning' : ''} ${timeLeft <= 5 ? 'critical' : ''}`}>
+          <svg className="timer-ring" viewBox="0 0 100 100">
+            <circle className="timer-ring-bg" cx="50" cy="50" r="45" />
+            <circle className="timer-ring-progress" cx="50" cy="50" r="45"
+              strokeDasharray={`${(timeLeft / timeLimit) * 283} 283`}
+            />
+          </svg>
+          <span className="timer-value">{timeLeft}</span>
+        </div>
+      </div>
+
       <div className="round-header">
-        <div className="round-header-top">
-          <div className="round-meta">
-            <h2>Round {currentRound} of {totalRounds}</h2>
-            <div className="used-letters">
-              {usedLetters.map((l, i) => (
-                <span key={i} className={`used-letter ${l === currentLetter ? 'current' : 'past'}`}>
-                  {l}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="letter-display">
-            <div className="letter-box">
-              <span className="letter">{currentLetter}</span>
-            </div>
-            <span className="letter-hint">Write words starting with this letter</span>
-          </div>
-
-          <div className={`timer ${timeLeft <= 10 ? 'warning' : ''} ${timeLeft <= 5 ? 'critical' : ''}`}>
-            <svg className="timer-ring" viewBox="0 0 100 100">
-              <circle className="timer-ring-bg" cx="50" cy="50" r="45" />
-              <circle className="timer-ring-progress" cx="50" cy="50" r="45"
-                strokeDasharray={`${(timeLeft / timeLimit) * 283} 283`}
-              />
-            </svg>
-            <span className="timer-value">{timeLeft}</span>
-          </div>
+        <div className="used-letters">
+          {usedLetters.map((l, i) => (
+            <span key={i} className={`used-letter ${l === currentLetter ? 'current' : 'past'}`}>
+              {l}
+            </span>
+          ))}
         </div>
       </div>
 

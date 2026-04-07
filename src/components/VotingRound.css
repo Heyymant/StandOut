@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -18,44 +18,41 @@
   align-items: center;
   padding: 1rem;
   background: var(--bg-card);
-  border: var(--border-width) solid var(--border-light);
-  border-radius: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   gap: 1rem;
-  box-shadow: 
-    inset -2px -2px 0px var(--border-medium),
-    inset 2px 2px 0px rgba(255,255,255,0.5),
-    4px 4px 0px var(--border-light);
+  box-shadow: 0 0 20px var(--crt-glow);
 }
 
 .voting-title h2 {
   font-family: var(--font-display);
-  font-size: 1.3rem;  /* Increased from 1.15rem */
-  font-weight: 600;
-  color: var(--text-dark);
+  font-size: 0.65rem;
+  line-height: 1.8;
+  font-weight: normal;
+  color: var(--primary);
   margin-bottom: 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .voting-title p {
-  font-size: 0.95rem;  /* Increased from 0.85rem */
+  font-size: 0.85rem;
   color: var(--text-secondary);
   margin: 0;
 }
 
 .letter-badge {
-  font-size: 1rem;  /* Increased from 0.9rem */
+  font-size: 0.85rem;
   color: var(--text-secondary);
   background: var(--bg-soft);
   padding: 10px 14px;
-  border: 2px solid var(--border-light);
-  border-radius: 0;
-  box-shadow: 
-    inset -1px -1px 0px var(--border-medium),
-    inset 1px 1px 0px rgba(255,255,255,0.5);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
 }
 
 .letter-badge span {
   color: var(--primary);
-  font-size: 1.35rem;  /* Increased from 1.2rem */
+  font-size: 1.2rem;
   font-weight: 700;
   margin-left: 4px;
 }
@@ -70,30 +67,23 @@
   background: var(--primary-light);
   border-radius: var(--radius-md);
   flex-wrap: wrap;
+  border: 1px solid rgba(232, 164, 74, 0.1);
 }
 
 .instruction-item {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.9rem;  /* Increased from 0.8rem */
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-secondary);
 }
 
-.accept-icon { 
-  color: var(--success);
-  display: inline-flex;
-  align-items: center;
-}
-.reject-icon { 
-  color: var(--error);
-  display: inline-flex;
-  align-items: center;
-}
+.accept-icon { color: var(--success); display: inline-flex; align-items: center; }
+.reject-icon { color: var(--error); display: inline-flex; align-items: center; }
 
 .instruction-note {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   font-style: italic;
 }
@@ -107,18 +97,19 @@
 }
 
 .prompt-tab {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--text-muted);
+  box-shadow: none;
 }
 
 .prompt-tab:hover {
@@ -129,19 +120,17 @@
 .prompt-tab.active {
   background: var(--primary);
   border-color: var(--primary);
-  color: white;
+  color: var(--bg-base);
+  box-shadow: 0 0 8px rgba(232, 164, 74, 0.2);
 }
 
 /* Prompt Voting Section */
 .prompt-voting-section {
   background: var(--bg-card);
-  border: var(--border-width) solid var(--border-light);
-  border-radius: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 
-    inset -2px -2px 0px var(--border-medium),
-    inset 2px 2px 0px rgba(255,255,255,0.5),
-    4px 4px 0px var(--border-light);
+  box-shadow: 0 0 15px var(--crt-glow);
 }
 
 .prompt-header {
@@ -155,8 +144,8 @@
 
 .prompt-number {
   font-family: var(--font-mono);
-  font-size: 0.85rem;  /* Increased from 0.75rem */
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--primary);
   background: var(--primary-light);
   width: 24px;
@@ -164,11 +153,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 }
 
 .prompt-text {
-  font-size: 1rem;  /* Increased from 0.9rem */
+  font-size: 0.9rem;
   color: var(--text-dark);
 }
 
@@ -176,7 +165,7 @@
   padding: 1.5rem;
   text-align: center;
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* Answers List */
@@ -193,18 +182,15 @@
   justify-content: space-between;
   padding: 12px;
   background: var(--bg-soft);
-  border: 2px solid var(--border-light);
-  border-radius: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
   gap: 10px;
   flex-wrap: wrap;
-  box-shadow: 
-    inset -1px -1px 0px var(--border-medium),
-    inset 1px 1px 0px rgba(255,255,255,0.5);
 }
 
 .answer-card.my-answer {
   background: var(--primary-light);
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-color: rgba(232, 164, 74, 0.2);
 }
 
 .answer-info {
@@ -215,7 +201,7 @@
 }
 
 .answer-player {
-  font-size: 0.8rem;  /* Increased from 0.7rem */
+  font-size: 0.7rem;
   color: var(--text-muted);
   display: flex;
   align-items: center;
@@ -226,15 +212,15 @@
   font-size: 0.6rem;
   font-weight: 600;
   color: var(--primary);
-  background: rgba(99, 102, 241, 0.15);
+  background: var(--primary-light);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .answer-word {
-  font-family: var(--font-display);
-  font-size: 1.2rem;  /* Increased from 1.1rem */
-  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text-dark);
 }
 
@@ -253,18 +239,8 @@
   font-weight: 600;
 }
 
-.accept-count { 
-  color: var(--success);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.reject-count { 
-  color: var(--error);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
+.accept-count { color: var(--success); display: inline-flex; align-items: center; gap: 4px; }
+.reject-count { color: var(--error); display: inline-flex; align-items: center; gap: 4px; }
 
 .vote-buttons {
   display: flex;
@@ -273,41 +249,40 @@
 
 .vote-btn {
   padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-size: 0.7rem;
+  font-weight: 700;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  box-shadow: none;
 }
 
 .vote-btn.accept {
   background: transparent;
-  border: 2px solid var(--success);
+  border: 1px solid var(--success);
   color: var(--success);
 }
 
 .vote-btn.accept:hover:not(:disabled),
 .vote-btn.accept.active {
   background: var(--success);
-  color: white;
+  color: var(--bg-base);
 }
 
 .vote-btn.reject {
   background: transparent;
-  border: 2px solid var(--error);
+  border: 1px solid var(--error);
   color: var(--error);
 }
 
 .vote-btn.reject:hover:not(:disabled),
 .vote-btn.reject.active {
   background: var(--error);
-  color: white;
+  color: var(--bg-base);
 }
 
-.vote-btn:disabled {
-  opacity: 0.35;
-}
+.vote-btn:disabled { opacity: 0.3; }
 
 /* Voting Footer */
 .voting-footer {
@@ -317,7 +292,7 @@
   padding: 12px 14px;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 .nav-buttons {
@@ -331,22 +306,21 @@
   padding: 10px 16px;
   background: var(--bg-soft);
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
+  box-shadow: none;
 }
 
 .nav-btn:hover:not(:disabled) {
-  background: var(--border-medium);
+  background: var(--border-light);
   color: var(--text-primary);
 }
 
-.nav-btn:disabled {
-  opacity: 0.4;
-}
+.nav-btn:disabled { opacity: 0.35; }
 
 .prompt-indicator {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   min-width: 50px;
   text-align: center;
@@ -356,22 +330,25 @@
   width: 100%;
   padding: 12px;
   background: var(--primary);
-  color: white;
-  border: none;
+  color: var(--bg-base);
+  border: 1px solid var(--primary-hover);
   border-radius: var(--radius-md);
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  box-shadow: none;
 }
 
 .complete-btn:hover {
   background: var(--primary-hover);
+  box-shadow: 0 0 12px rgba(232, 164, 74, 0.25);
 }
 
 .waiting-host {
   text-align: center;
   color: var(--text-secondary);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 /* Voters Panel */
@@ -383,12 +360,12 @@
 }
 
 .voters-panel h4 {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .voters-list {
@@ -398,7 +375,7 @@
 }
 
 .voter {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-secondary);
   background: var(--bg-soft);
@@ -407,16 +384,16 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  border: 1px solid var(--border-light);
 }
 
 .voter.you {
   background: var(--primary-light);
   color: var(--primary);
+  border-color: rgba(232, 164, 74, 0.2);
 }
 
-.host-star {
-  color: var(--accent);
-}
+.host-star { color: var(--accent); }
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -425,40 +402,30 @@
     gap: 10px;
     text-align: center;
   }
-
   .voting-instructions {
     flex-direction: column;
     gap: 6px;
   }
-
   .answer-card {
     flex-direction: column;
     align-items: stretch;
   }
-
   .vote-section {
     flex-direction: column;
     gap: 8px;
   }
-
-  .vote-counts {
-    justify-content: center;
-  }
-
-  .vote-buttons {
-    justify-content: center;
-  }
+  .vote-counts { justify-content: center; }
+  .vote-buttons { justify-content: center; }
 }
 
 @media (max-width: 400px) {
   .prompt-tab {
-    width: 32px;
-    height: 32px;
-    font-size: 0.8rem;
+    width: 30px;
+    height: 30px;
+    font-size: 0.75rem;
   }
-  
   .vote-btn {
     padding: 8px 10px;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 }

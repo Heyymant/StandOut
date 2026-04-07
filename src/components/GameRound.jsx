@@ -224,50 +224,33 @@ function GameRound({ socket, room, playerName, isHost }) {
   // Active game round
   return (
     <div className="game-round">
-      <div className="round-header">
-        <div className="round-header-top">
-          <div className="round-meta">
-            <h2>Round {room.currentRound} of {room.gameConfig?.rounds || 3}</h2>
-            <div className="used-letters">
-              {room.usedLetters.map((l, i) => (
-                <span key={i} className={`used-letter ${l === room.currentLetter ? 'current' : 'past'}`}>
-                  {l}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          <div className="letter-display">
-            <div className="letter-box">
-              <span className="letter">{room.currentLetter}</span>
-            </div>
-            <span className="letter-hint">Write words starting with this letter</span>
-          </div>
-
-          <div className={`timer ${timeLeft <= 10 ? 'warning' : ''} ${timeLeft <= 5 ? 'critical' : ''}`}>
-            <svg className="timer-ring" viewBox="0 0 100 100">
-              <circle
-                className="timer-ring-bg"
-                cx="50"
-                cy="50"
-                r="45"
-              />
-              <circle
-                className="timer-ring-progress"
-                cx="50"
-                cy="50"
-                r="45"
-                strokeDasharray={`${(timeLeft / 60) * 283} 283`}
-              />
-            </svg>
-            <span className="timer-value">{timeLeft}</span>
-          </div>
+      {/* Sticky HUD - always visible */}
+      <div className="sticky-hud">
+        <div className="hud-letter-box">
+          <span className="hud-letter">{room.currentLetter}</span>
         </div>
-        
-        {/* Game Active Warning */}
-        <div className="game-active-warning">
-          <span className="warning-icon">⚠️</span>
-          <span className="warning-text">Game in progress - Please don't close this tab</span>
+        <div className="hud-info">
+          <span className="hud-round">Round {room.currentRound}/{room.gameConfig?.rounds || 3}</span>
+          <span className="hud-hint">Words starting with "{room.currentLetter}"</span>
+        </div>
+        <div className={`hud-timer ${timeLeft <= 10 ? 'warning' : ''} ${timeLeft <= 5 ? 'critical' : ''}`}>
+          <svg className="timer-ring" viewBox="0 0 100 100">
+            <circle className="timer-ring-bg" cx="50" cy="50" r="45" />
+            <circle className="timer-ring-progress" cx="50" cy="50" r="45"
+              strokeDasharray={`${(timeLeft / (room.gameConfig?.timeLimit || 60)) * 283} 283`}
+            />
+          </svg>
+          <span className="timer-value">{timeLeft}</span>
+        </div>
+      </div>
+
+      <div className="round-header">
+        <div className="used-letters">
+          {room.usedLetters.map((l, i) => (
+            <span key={i} className={`used-letter ${l === room.currentLetter ? 'current' : 'past'}`}>
+              {l}
+            </span>
+          ))}
         </div>
       </div>
 
