@@ -155,16 +155,14 @@ function VotingRound({ socket, room, playerName, isHost }) {
                         <button
                           className={`vote-btn accept ${myVote === 'accept' ? 'active' : ''}`}
                           onClick={() => handleVote(answer.id, 'accept')}
-                          disabled={isMyAnswer}
-                          title={isMyAnswer ? "Can't vote on your own answer" : "Accept this answer"}
+                          title="Accept this answer"
                         >
                           <CheckIcon size={16} /> Accept
                         </button>
                         <button
                           className={`vote-btn reject ${myVote === 'reject' ? 'active' : ''}`}
                           onClick={() => handleVote(answer.id, 'reject')}
-                          disabled={isMyAnswer}
-                          title={isMyAnswer ? "Can't vote on your own answer" : "Reject this answer"}
+                          title="Reject this answer"
                         >
                           <XIcon size={16} /> Reject
                         </button>
